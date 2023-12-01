@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Statement Generator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    
+</head>
+<body>
+    
+    <h1>bank  </h1>
+    <h1> statement </h1>
+    <h1>generator</h1>
+    <form id="statementForm">
+        <label for="email">email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="date1">start date</label>
+        <input type="date" id="date1" name="date1" required>
+        
+        <label for="date2">end date</label>
+        <input type="date" id="date2" name="date2" required>
+        
+        <button type="button" onclick="generateStatement()">generate statement</button>
+    </form>
+ 
+    <div id="result"></div>
+
+    <script>
+        function generateStatement() {
+            const email = document.getElementById('email').value;
+            const date1 = document.getElementById('date1').value;
+            const date2 = document.getElementById('date2').value;
+
+            const data = {
+                email: email,
+                date1: date1,
+                date2: date2
+            };
+
+            fetch('http://127.0.0.1:5000', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+        }
+    </script>
+</body>
+</html>

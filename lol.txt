@@ -1,0 +1,32 @@
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail, Attachment
+import base64
+
+def send_email(pdf):
+    message = Mail(
+        from_email='weareinfinite2002@gmail.com',
+        to_emails='weareinfinite2002@gmail.com',
+        subject='Bank Statement',
+        html_content="Please find your bank statement attached."
+    )
+
+    attachment = Attachment()
+    attachment.file_content = base64.b64encode(pdf.output(dest='S').encode('latin1')).decode('utf-8')
+    attachment.file_type = "application/pdf"
+    attachment.file_name = "bank_statement.pdf"
+    attachment.disposition = "attachment"
+    message.attachment = attachment
+
+    import ssl
+    ssl._create_default_https_context = ssl._create_unverified_context
+
+    try:
+        sg = SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+        sg.send(message)
+        print("Email sent successfully!")
+        return render_template('confirm.html', message='Email sent successfully!')
+    except Exception as e:
+        print(f"No email : {e}")
+        return render_template('error.html', message='Email NOT sent.')
+   

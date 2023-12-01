@@ -1,0 +1,70 @@
+/* styles.css */
+
+@font-face {
+    font-family: 'Gilroy-Regular';
+    src: url('../fonts/Gilroy-Regular.ttf') format('truetype');
+    /* Add additional formats if needed, such as woff, woff2 */
+}
+
+body {
+    background-color: #000000;
+    src: url('../fonts/Gilroy-Regular.ttf') format('truetype');
+    font-family: "Gilroy-Regular", sans-serif;
+    font-weight: bold;
+}
+
+
+
+h1 {
+    color: #ffffff;
+    text-align: left;
+    text-align: bottom;
+    font-size: 4em
+}
+
+/* Style for form and its labels and inputs */
+form {
+    max-width: 400px;
+    color: #de3996; /* Set the color for the h1 element */
+    float: right; /* Center-align the text */
+    float: top;
+    margin-right: 50px;
+ 
+}
+
+label {
+    display: block; /* Display labels as block elements for better spacing */
+    margin-bottom: 8px; /* Add margin below each label */
+    font-size: 1em
+}
+
+input {
+    width: 100%; /* Make the input fields take the full width of their container */
+    padding: 8px; /* Add padding to the input fields */
+    margin-bottom: 50px; /* Add margin below each input field */
+    background: #565656;
+}
+
+/* Style for the "Generate Statement" button */
+button {
+    background-color: #2ecc71; /* Set the background color for the button */
+    color: #fff; /* Set the text color for the button */
+    padding: 10px 15px; /* Add padding to the button */
+    border: none; /* Remove border */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    opacity:0.5;
+
+}
+
+button:hover {
+    background-color: #27ae60; /* Change background color on hover */
+    opacity:1;
+
+}
+
+/* Style for the result container */
+#result {
+    margin-top: 20px; /* Add margin on top of the result container */
+    text-align: center; /* Center-align the text within the container */
+    font-weight: bold; /* Make the text bold */
+}
